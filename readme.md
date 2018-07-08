@@ -11,14 +11,13 @@ Clone this repo and follow the steps below:
 composer install
 ```
 
-2. Environment Setting  
-2.1 Create `.env` file
+2. Environment Settings, create `.env` file
 
 ```
 cp .env.example .env
 ```
 
-2.2 Update `.env` file as you need.  
+Update `.env` file as you need.  
 you can get keygen by start the server
 
 ```
@@ -27,7 +26,7 @@ php -S localhost:8000 -t public
 
 and go to http://localhost:8000/api/v1/keygen
 
-2.3 Finnally, run below commands
+Finally, run below commands
 
 ```
 php artisane migrate
@@ -36,6 +35,7 @@ php passport:install
 ```
 
 ** take note of `passport:install` output.
+
 #### Run
 
 ```
