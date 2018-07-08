@@ -1,21 +1,60 @@
-# Lumen PHP Framework
+# Lumen + Passport Authentication Demo
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+The demo of implementation [Lumen](http://lumen.laravel.com) with [Lumen-Passport](https://github.com/dusterio/lumen-passport) authentication. Also database seed and CORS supported.
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+#### Installation
 
-## Official Documentation
+Clone this repo and follow the steps below:  
+1. Dependencies installation
 
-Documentation for the framework can be found on the [Lumen website](http://lumen.laravel.com/docs).
+```
+composer install
+```
 
-## Security Vulnerabilities
+2. Environment Setting  
+2.1 Create `.env` file
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+```
+cp .env.example .env
+```
 
-## License
+2.2 Update `.env` file as you need.  
+you can get keygen by start the server
 
-The Lumen framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+```
+php -S localhost:8000 -t public
+```
+
+and go to http://localhost:8000/api/v1/keygen
+
+2.3 Finnally, run below commands
+
+```
+php artisane migrate
+php artisane db:seed
+php passport:install
+```
+
+** take note of `passport:install` output.
+#### Run
+
+```
+php -S localhost:8000 -t public
+```
+
+#### Testing
+
+Use [Postman](https://www.getpostman.com/) do `POST` request to http://localhost:8000/api/v1/oauth/token with form data below
+
+```
+'grant_type' => 'password',
+'client_id' => 'client-id',
+'client_secret' => 'client-secret',
+'username' => 'admin@example.com',
+'password' => 'password',
+'scope' => '*',
+```
+
+`client_id` and `client_secret` you can get from `passport:install` out put command or from table `oauth_clients`
+
+more information about [Passport Authentication](https://laravel.com/docs/5.6/passport)
