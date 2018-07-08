@@ -11,6 +11,14 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
+$router->group(['prefix' => 'api/v1'], function () use ($router) {
+    $router->get('version', function () use ($router) {
+        return $router->app->version();
+    });
+
+    $router->get('keygen', function () {
+        return str_random(32);
+    });
 });
+
+$router->get('/{any:.*}', 'HomeController@index');
