@@ -55,6 +55,6 @@ Use [Postman](https://www.getpostman.com/) do `POST` request to http://localhost
 'scope' => '*',
 ```
 
-`client_id` and `client_secret` you can get from `passport:install` out put command or from table `oauth_clients`
+`client_id` and `client_secret` you can get from `passport:install` output command or from table `oauth_clients`
 
 more information about [Passport Authentication](https://laravel.com/docs/5.6/passport)
