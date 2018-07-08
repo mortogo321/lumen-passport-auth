@@ -34,7 +34,7 @@ php artisane db:seed
 php passport:install
 ```
 
-** take note of `passport:install` output.
+** take noted of `passport:install` output.
 
 #### Run
 
